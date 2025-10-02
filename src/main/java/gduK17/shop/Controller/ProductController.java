@@ -79,7 +79,7 @@ public class ProductController {
     @PostMapping("/delete/{id}")
     public String deleteProduct(@PathVariable Long id,@ModelAttribute Product product) {
         product.setId(id);
-        productService.deleteProduct(product); // save lại (overwrite nếu id trùng)
+        productService.deleteProduct(product);
         return "redirect:/products/list";
     }
 

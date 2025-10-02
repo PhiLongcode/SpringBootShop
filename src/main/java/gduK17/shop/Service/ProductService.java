@@ -41,7 +41,7 @@ public List<Product> getProducts(){
             product.setId(id.getAndIncrement());
         }
 
-        productMap.remove(product.getId(), product);
+        productMap.remove(product.getId());
         return product;
     }
 }
