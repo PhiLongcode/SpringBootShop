@@ -8,6 +8,10 @@
 </head>
 <body class="p-4">
 
+<div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+    <span th:text="${successMessage}"></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 <h1 class="mt-5">DANH SÁCH SẢN PHẨM</h1>
 
 <!-- Button trigger modal -->
@@ -19,6 +23,7 @@
     <thead>
     <tr>
         <th>ID</th>
+        <th>Img</th>
         <th>Name</th>
         <th>Price</th>
         <th>Quantity</th>
@@ -26,13 +31,18 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="p:${products}">
+    <tr th:each="p : ${products}">
         <td th:text="${p.id}"></td>
+        <td>
+            <img th:if="${p.pathImage}" th:src="@{${p.pathImage}}" alt="No image" width="100"/>
+        </td>
         <td th:text="${p.name}"></td>
         <td th:text="${p.price}"></td>
         <td th:text="${p.quantity}"></td>
-        <td><a th:href="@{/products/edit/{id}(id=${p.id})}" class="btn btn-primary mx-2">Edit</a><a th:href="@{/products/delete/{id}(id=${p.id})}" class="btn btn-danger">Delete</a></td>
-        <td></td>
+        <td>
+            <a th:href="@{/products/edit/{id}(id=${p.id})}" class="btn btn-primary mx-2">Edit</a>
+            <a th:href="@{/products/delete/{id}(id=${p.id})}" class="btn btn-danger">Delete</a>
+        </td>
     </tr>
     </tbody>
 </table>

@@ -1,8 +1,19 @@
-package gduK17.shop.Model;
+package gduK17.shop.domain.entity;
 
+/**
+ * Message domain entity.
+ */
 public class Message {
     private String name;
     private String message;
+
+    public Message() {
+    }
+
+    public Message(String name, String message) {
+        this.name = name;
+        this.message = message;
+    }
 
     public String getName() {
         return name;
