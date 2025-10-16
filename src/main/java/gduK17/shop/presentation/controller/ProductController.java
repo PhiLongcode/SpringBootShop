@@ -31,7 +31,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/list")
+    @GetMapping({"/list", "/"})
     public String showProducts(Model model) {
         List<Product> products = productService.getAllProducts();
         List<ProductDTO> productDTOs = products.stream()

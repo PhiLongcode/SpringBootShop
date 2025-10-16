@@ -4,12 +4,20 @@ package gduK17.shop.domain.entity;
  * Domain entity for Product.
  * This is pure domain class, independent of any persistence framework.
  */
-public class Product {
+public class Product extends Entity {
     private Long id;
     private String name;
     private String description;
     private Double price;
     private int quantity;
+
+    @Override
+    public boolean isEmpty() {
+        return id == null && (name == null || name.trim().isEmpty())
+                && (description == null || description.trim().isEmpty())
+                && (price == null || price <= 0)
+                && quantity <= 0;
+    }
     private String pathImage;
 
     // Constructor without ID for creating new products
